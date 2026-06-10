@@ -1,1 +1,15 @@
-# actions-hub-kubectl
+# actions-hub/kubectl
+
+GitHub Action for interacting with kubectl (k8s)
+
+Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/actions-hub/kubectl](https://github.com/actions-hub/kubectl).
+
+## Versions
+
+| Version | Tag | Upstream commit |
+|---------|-----|-----------------|
+| v1.35.3 | [`v1.35.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.3) | [`934aaa4`](https://github.com/actions-hub/kubectl/commit/934aaa4354bbbc3d2176ae8d7cae92d515032dff) |
+
+## Privacy
+
+This Action contacts Chainguard's licensing server to verify authorization. Connection metadata (IP address, GitHub repository identifier, timestamp, and any metadata encoded in the auth token) is transmitted to Chainguard, Inc. even if authorization is denied in accordance with our [Privacy Notice](https://www.chainguard.dev/legal/privacy-notice)
