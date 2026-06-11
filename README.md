@@ -9,6 +9,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
 | v1.35.3 | [`v1.35.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.3) | [`934aaa4`](https://github.com/actions-hub/kubectl/commit/934aaa4354bbbc3d2176ae8d7cae92d515032dff) |
+| v1.35.4 | [`v1.35.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.4) | [`248102e`](https://github.com/actions-hub/kubectl/commit/248102ecd7c9057f9aef1c458da0b1f0d80f2916) |
 
 ## Privacy
 
