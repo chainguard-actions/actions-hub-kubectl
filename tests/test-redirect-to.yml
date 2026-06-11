@@ -1,0 +1,21 @@
+name: Test redirect-to input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          args: version --client --output=json
+          redirect-to: KUBECTL_OUTPUT
+      - name: Assert redirect-to captured output
+        run: |
+          echo "KUBECTL_OUTPUT value: $KUBECTL_OUTPUT"
+          if [ -z "$KUBECTL_OUTPUT" ]; then
+            echo "FAIL: expected KUBECTL_OUTPUT to be set but it was empty"
+            exit 1
+          fi
+          echo "PASS"
