@@ -1,0 +1,28 @@
+name: Test kubectl version --client
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # Minimal kubeconfig (base64-encoded):
+      # apiVersion: v1
+      # kind: Config
+      # clusters: []
+      # contexts: []
+      # current-context: ""
+      # users: []
+      KUBE_CONFIG: YXBpVmVyc2lvbjogdjEKa2luZDogQ29uZmlnCmNsdXN0ZXJzOiBbXQpjb250ZXh0czogW10KY3VycmVudC1jb250ZXh0OiAiIgp1c2VyczogW10K
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - id: kubectl-version
+        name: Run kubectl version --client
+        uses: .
+        with:
+          args: version --client=true
+
+      - name: Assert step succeeded
+        run: |
+          echo "kubectl version --client ran successfully"
+          echo "PASS"
