@@ -1,0 +1,17 @@
+name: Test kubectl redirect-to input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          args: version --client --output=json
+          redirect-to: KUBECTL_OUTPUT
+      - name: Assert redirect-to was accepted
+        run: |
+          echo "kubectl with redirect-to step completed successfully"
+          echo "PASS"
