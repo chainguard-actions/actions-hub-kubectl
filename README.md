@@ -1,17 +1,148 @@
-# actions-hub/kubectl
+# kubectl
 
-GitHub Action for interacting with kubectl (k8s)
+[![Preview](https://serhiy.s3.eu-central-1.amazonaws.com/Github_repo/kubectl/logo.png)](https://cloud.google.com)
 
-Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/actions-hub/kubectl](https://github.com/actions-hub/kubectl).
+GitHub Action for interacting with kubectl ([k8s](https://kubernetes.io))
+
+## Usage
+To use kubectl put this step into your workflow:
+
+### Authorization with config file
+```yaml
+- uses: actions-hub/kubectl@master
+  env:
+    KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+  with:
+    args: get pods
+```
+
+### Authorization with credentials
+```yaml
+- uses: actions-hub/kubectl@master
+  env:
+    KUBE_HOST: ${{ secrets.KUBE_HOST }}
+    KUBE_CERTIFICATE: ${{ secrets.KUBE_CERTIFICATE }}
+    KUBE_USERNAME: ${{ secrets.KUBE_USERNAME }}
+    KUBE_PASSWORD: ${{ secrets.KUBE_PASSWORD }}
+  with:
+    args: get pods
+```
+
+### Authorization with a bearer token
+```yaml
+- uses: actions-hub/kubectl@master
+  env:
+    KUBE_HOST: ${{ secrets.KUBE_HOST }}
+    KUBE_CERTIFICATE: ${{ secrets.KUBE_CERTIFICATE }}
+    KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
+  with:
+    args: get pods
+```
+
+### Using kubectl ouput
+```yaml
+  - run: echo "EXPECTED_NAMESPACE=namespace/$NAMESPACE" >> $GITHUB_ENV
+  - name: 🛂 Check namespace exists
+    uses: actions-hub/kubectl@master
+    with:
+      redirect-to: NAMESPACE_EXIST
+      args: get namespace ${{ env.NAMESPACE }} -o name --ignore-not-found
+
+  - name: 🛡️ Preserve secret WEBAPP_TLS
+    if: env.NAMESPACE_EXIST == env.EXPECTED_NAMESPACE
+    uses: actions-hub/kubectl@master
+    with:
+      redirect-to: WEBAPP_TLS
+      args: get secret webapp-tls -n ${{ env.NAMESPACE }} -o yaml
+```
+
+## Environment variables
+All these variables need to authorize to kubernetes cluster.  
+I recommend using secrets for this.
+
+### KUBECONFIG file
+First options its to use [kubeconfig file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/).  
+
+For this method `KUBE_CONFIG` required.  
+You can find it: `cat $HOME/.kube/config | base64 `.
+
+Optionally you can switch the [context](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) (the cluster) if you have few in kubeconfig file. Passing specific context to `KUBE_CONTEXT`. To see the list of available contexts do: `kubectl config get-contexts`.
+
+| Variable | Type |
+| --- | --- |
+| KUBE_CONFIG | string (base64) |
+| KUBE_CONTEXT | string |
+
+### KUBECONFIG file
+Another way to authenticate in the cluster is [HTTP basic auth](https://kubernetes.io/docs/reference/access-authn-authz/authentication/).
+  
+For this you need to pass:
+- host (IP only, without protocol)
+- username
+- password
+- cluster CA certificate
+
+| Variable | Type |
+| --- | --- |
+| KUBE_HOST | string |
+| KUBE_USERNAME | string |
+| KUBE_PASSWORD | string |
+| KUBE_CERTIFICATE | string |
+
+## Example
+```yaml
+name: Get pods
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: get pods
+```
+
+```yaml
+name: Get pods
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+
+      - uses: actions-hub/kubectl@master
+        with:
+          args: get pods
+```
 
 ## Versions
+If you need a specific version of kubectl, make a PR with a specific version number.
+After accepting PR the new release will be created.   
+To use a specific version of kubectl use:
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.35.3 | [`v1.35.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.3) | [`934aaa4`](https://github.com/actions-hub/kubectl/commit/934aaa4354bbbc3d2176ae8d7cae92d515032dff) |
-| v1.35.4 | [`v1.35.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.4) | [`248102e`](https://github.com/actions-hub/kubectl/commit/248102ecd7c9057f9aef1c458da0b1f0d80f2916) |
-| v1.36.1 | [`v1.36.1`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.1) | [`af0e87a`](https://github.com/actions-hub/kubectl/commit/af0e87aaa9cd98820383c16cba28c644ba85c067) |
-| v1.36.2 | [`v1.36.2`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.2) | [`2d0675e`](https://github.com/actions-hub/kubectl/commit/2d0675eaaeebf6d63e18bc2b903b09dfa8977431) |
+```yaml
+- uses: actions-hub/kubectl@1.14.3
+  env:
+    KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+  with:
+    args: get pods
+```
+
+## Licence
+[MIT License](https://github.com/actions-hub/kubectl/blob/master/LICENSE)
 
 ## Privacy
 

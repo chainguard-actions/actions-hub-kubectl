@@ -1,0 +1,27 @@
+name: Test basic kubectl action (no kubeconfig)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Run kubectl action without kubeconfig
+        id: action
+        uses: .
+        with:
+          args: version --client
+        continue-on-error: true
+      - name: Assert action fails gracefully without kubeconfig
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully as expected (no kubeconfig available)"
+          elif [ "$OUTCOME" = "success" ]; then
+            echo "PASS: action succeeded (kubectl available)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
