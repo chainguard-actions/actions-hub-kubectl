@@ -1,0 +1,20 @@
+name: tests
+
+on: [push]
+
+permissions:
+  contents: read
+
+jobs:
+  kustomize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: |
+          echo 'configMapGenerator:
+              - name: example
+                literals:
+                  - FOO=Bar' > kustomization.yaml
+      - uses: ./
+        with:
+          args: kustomize
