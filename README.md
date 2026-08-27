@@ -14,6 +14,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v1.36.2 | [`v1.36.2`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.2) | [`2d0675e`](https://github.com/actions-hub/kubectl/commit/2d0675eaaeebf6d63e18bc2b903b09dfa8977431) |
 | v1.36.3 | [`v1.36.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.3) | [`0456ef3`](https://github.com/actions-hub/kubectl/commit/0456ef3aefab85c135a0e285bc3b5c600372eea2) |
 | v1.36.4 | [`v1.36.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.4) | [`8a43455`](https://github.com/actions-hub/kubectl/commit/8a4345536974c9827d8c42ee2f7ba075d57230ea) |
+| v1.37.0 | [`v1.37.0`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.0) | [`10c0b38`](https://github.com/actions-hub/kubectl/commit/10c0b389934420c86f6ae8473c077aac80e2c13c) |
 
 ## Privacy
 
