@@ -1,0 +1,31 @@
+name: Test basic kubectl action (no credentials)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - id: action
+        uses: .
+        with:
+          args: version
+        continue-on-error: true
+
+      - name: Assert action fails gracefully without credentials
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          # Without KUBE_CONFIG or KUBE_HOST, entrypoint.sh exits with
+          # "No authorization data found. Please provide KUBE_CONFIG or KUBE_HOST variables."
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed as expected without credentials"
+          elif [ "$OUTCOME" = "success" ]; then
+            echo "FAIL: action should have failed without credentials but succeeded"
+            exit 1
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
