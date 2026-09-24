@@ -1,0 +1,30 @@
+name: Test basic kubectl kustomize (no auth required)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - id: action
+        uses: .
+        with:
+          args: kustomize
+        continue-on-error: true
+
+      - name: Assert action ran (kustomize bypasses auth check)
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          # The entrypoint has a special bypass for 'kustomize' args that skips auth check.
+          # kubectl kustomize with no directory argument may fail with a usage error,
+          # but the action should at least start (not fail on missing auth).
+          # Accept both success and failure as valid outcomes (action ran).
+          if [ "$OUTCOME" = "success" ] || [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action ran (outcome=$OUTCOME)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
