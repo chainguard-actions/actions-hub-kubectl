@@ -16,6 +16,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v1.36.4 | [`v1.36.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.4) | [`8a43455`](https://github.com/actions-hub/kubectl/commit/8a4345536974c9827d8c42ee2f7ba075d57230ea) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.36.4/HARDENING.md) |
 | v1.37.0 | [`v1.37.0`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.0) | [`10c0b38`](https://github.com/actions-hub/kubectl/commit/10c0b389934420c86f6ae8473c077aac80e2c13c) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.37.0/HARDENING.md) |
 | v1.37.1 | [`v1.37.1`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.1) | [`4a69b40`](https://github.com/actions-hub/kubectl/commit/4a69b4074d038d7bc36682b7d0862db29c181ed4) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.37.1/HARDENING.md) |
+| v1.37.2 | [`v1.37.2`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.2) | [`d95b167`](https://github.com/actions-hub/kubectl/commit/d95b167fd6c1be77bcace93d188d57d19dfc5258) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.37.2/HARDENING.md) |
 
 ## Privacy
 
