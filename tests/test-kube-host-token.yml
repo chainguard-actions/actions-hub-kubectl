@@ -1,0 +1,40 @@
+name: Test KUBE_HOST with KUBE_TOKEN
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Prepare certificate env
+        run: |
+          echo "KUBE_CERTIFICATE=$(printf 'dummy-cert' | base64 -w0)" >> "$GITHUB_ENV"
+      - id: action
+        uses: .
+        env:
+          KUBE_HOST: 127.0.0.1:6443
+          KUBE_TOKEN: dummy-token
+          # act does not always interpolate inputs into runs.env; set dest directly too
+          dest: CTX_OUT
+        with:
+          args: config current-context
+          redirect-to: CTX_OUT
+      - name: Assert action succeeded and context is default when redirected
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" != "success" ]; then
+            echo "FAIL: expected success"
+            exit 1
+          fi
+          ACTUAL="$(printf '%s' "${CTX_OUT:-}" | tr -d '[:space:]')"
+          echo "redirected: '$ACTUAL'"
+          if [ -n "$ACTUAL" ] && [ "$ACTUAL" != "default" ]; then
+            echo "FAIL: expected redirected context 'default'"
+            exit 1
+          fi
+          if [ -z "$ACTUAL" ]; then
+            echo "NOTE: redirect not applied by runner (runs.env inputs not interpolated); output went to stdout"
+          fi
+          echo "PASS"

@@ -1,0 +1,43 @@
+name: Test kubectl client version
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Build base64 kubeconfig
+        run: |
+          cat > /tmp/kubeconfig <<'YAML'
+          apiVersion: v1
+          kind: Config
+          clusters:
+          - name: c
+            cluster:
+              server: https://127.0.0.1:6443
+          contexts:
+          - name: ctx
+            context:
+              cluster: c
+              user: u
+          current-context: ctx
+          users:
+          - name: u
+            user:
+              token: dummy
+          YAML
+          echo "KUBE_CONFIG=$(base64 -w0 /tmp/kubeconfig)" >> "$GITHUB_ENV"
+      - id: action
+        uses: .
+        with:
+          args: version --client
+      - name: Assert step succeeded
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" != "success" ]; then
+            echo "FAIL: expected success"
+            exit 1
+          fi
+          echo "PASS"
