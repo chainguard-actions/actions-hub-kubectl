@@ -6,16 +6,16 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.35.3 | [`v1.35.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.3) | [`934aaa4`](https://github.com/actions-hub/kubectl/commit/934aaa4354bbbc3d2176ae8d7cae92d515032dff) |
-| v1.35.4 | [`v1.35.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.4) | [`248102e`](https://github.com/actions-hub/kubectl/commit/248102ecd7c9057f9aef1c458da0b1f0d80f2916) |
-| v1.36.1 | [`v1.36.1`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.1) | [`af0e87a`](https://github.com/actions-hub/kubectl/commit/af0e87aaa9cd98820383c16cba28c644ba85c067) |
-| v1.36.2 | [`v1.36.2`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.2) | [`2d0675e`](https://github.com/actions-hub/kubectl/commit/2d0675eaaeebf6d63e18bc2b903b09dfa8977431) |
-| v1.36.3 | [`v1.36.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.3) | [`0456ef3`](https://github.com/actions-hub/kubectl/commit/0456ef3aefab85c135a0e285bc3b5c600372eea2) |
-| v1.36.4 | [`v1.36.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.4) | [`8a43455`](https://github.com/actions-hub/kubectl/commit/8a4345536974c9827d8c42ee2f7ba075d57230ea) |
-| v1.37.0 | [`v1.37.0`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.0) | [`10c0b38`](https://github.com/actions-hub/kubectl/commit/10c0b389934420c86f6ae8473c077aac80e2c13c) |
-| v1.37.1 | [`v1.37.1`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.1) | [`4a69b40`](https://github.com/actions-hub/kubectl/commit/4a69b4074d038d7bc36682b7d0862db29c181ed4) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v1.35.3 | [`v1.35.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.3) | [`934aaa4`](https://github.com/actions-hub/kubectl/commit/934aaa4354bbbc3d2176ae8d7cae92d515032dff) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.35.3/HARDENING.md) |
+| v1.35.4 | [`v1.35.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.35.4) | [`248102e`](https://github.com/actions-hub/kubectl/commit/248102ecd7c9057f9aef1c458da0b1f0d80f2916) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.35.4/HARDENING.md) |
+| v1.36.1 | [`v1.36.1`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.1) | [`af0e87a`](https://github.com/actions-hub/kubectl/commit/af0e87aaa9cd98820383c16cba28c644ba85c067) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.36.1/HARDENING.md) |
+| v1.36.2 | [`v1.36.2`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.2) | [`2d0675e`](https://github.com/actions-hub/kubectl/commit/2d0675eaaeebf6d63e18bc2b903b09dfa8977431) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.36.2/HARDENING.md) |
+| v1.36.3 | [`v1.36.3`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.3) | [`0456ef3`](https://github.com/actions-hub/kubectl/commit/0456ef3aefab85c135a0e285bc3b5c600372eea2) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.36.3/HARDENING.md) |
+| v1.36.4 | [`v1.36.4`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.36.4) | [`8a43455`](https://github.com/actions-hub/kubectl/commit/8a4345536974c9827d8c42ee2f7ba075d57230ea) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.36.4/HARDENING.md) |
+| v1.37.0 | [`v1.37.0`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.0) | [`10c0b38`](https://github.com/actions-hub/kubectl/commit/10c0b389934420c86f6ae8473c077aac80e2c13c) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.37.0/HARDENING.md) |
+| v1.37.1 | [`v1.37.1`](https://github.com/chainguard-actions/actions-hub-kubectl/tree/v1.37.1) | [`4a69b40`](https://github.com/actions-hub/kubectl/commit/4a69b4074d038d7bc36682b7d0862db29c181ed4) | [`HARDENING.md`](https://github.com/chainguard-actions/actions-hub-kubectl/blob/v1.37.1/HARDENING.md) |
 
 ## Privacy
 
